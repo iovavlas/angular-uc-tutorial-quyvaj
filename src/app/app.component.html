@@ -1,0 +1,71 @@
+<div class="app">
+	<h1> Rendering App-root component... </h1>
+	<p> Hello... {{ title }} !</p>
+	<div>
+		<h2> - Interpolation & expressions - </h2>
+		{{ Num1 + 2 + '!' }} {{ isHappy ? ';)' : ':(' }}
+	</div>
+	<div>
+		<h2> - Property (One way) binding: [Component => Template] - </h2>
+		<span> {{ title }} </span> 
+    <span [innerHTML]="title"> </span> 
+    <div>
+      <input type="text"   value=""          placeholder="Input field">
+      <input type="text"  [value]=inputText  placeholder="Input field">
+      <div> You entered: {{inputText}} </div>
+    </div>
+  </div>
+  <div>
+    <h2> - Event binding: [Template => Component] - </h2> 
+    <input type="text"  [value]=eventInputText  
+           (input)="handleInput($event)" placeholder="Input field"
+           (focus)="this.eventInputText=''">
+    <div> You entered: {{eventInputText}} </div>
+    <button (click)="handleClickDelete()"> Delete Input </button>
+  </div> 
+  <div>
+    <h2> - Two way binding (Read & Write) - </h2> 
+    <input type="text"  [ngModel]=inputText2  
+           (ngModelChange)="handleChange($event)" placeholder="Input field"
+           (focus)="this.inputText2=''">
+    <div> You entered: {{inputText2}} </div> 
+    <input type="text"  [(ngModel)]=inputText3  
+            placeholder="Input field"   (focus)="this.inputText3=''">
+    <div> You entered: {{inputText3}} </div>
+  </div> 
+  <div>
+    <h2> - Template #ref variables (Reference to a DOM-Node) - </h2> 
+    <input type="text"  #username  value=""> 
+    <div> You entered: {{inputText4}} </div> 
+    <button (click)="handleClickGet(username.value)"> Get Input </button>
+  </div> 
+  <div> 
+    <h2> - ngIf (Directive) - </h2>
+    <input type="text"  [value]="inputText2"  placeholder="Search"  
+          (input)="handleChange($event.target.value)">
+    <div *ngIf="inputText2.length > 2"> Searching for... {{inputText2}} </div> 
+  </div>
+  <div> 
+    <h2> - ngFor (Directive) & ngClass & ngStyle - </h2>
+    <div> Passengers list... </div>
+    <ul>
+      <li *ngFor="let person of passengers; let i = index">    <!-- "For of" Loop --> 
+        <!-- [class.classname]="condition" : Add a single class, if condition is true -->
+        <span class="status"  [class.checked-in]="person.checkedIn"> </span>
+        <!-- [ngClass]="{ 'classname1': condition1, 'classname2': condition2 }" : 
+              Add multiple classes, if conditions are true -->
+        <span class="status"  [ngClass]="{ 'checked-in': person.checkedIn }"> </span>
+        <!-- [style.property]="condition" : Add a css style property, if condition is true --> 
+        <span [style.color]="( person.checkedIn ? 'green' : 'red' )">
+          #{{ i + 1 }} : id = {{ person.id }} , Name = {{ person.fullname }} 
+        </span>
+        <!-- [ngStyle]="{ 'property1': 'value1', 'property2': 'value2' }" : 
+              Add multiple css style properties, optional with a condition -->
+        <span [ngStyle]="{ color: ( person.checkedIn ? 'green' : 'red' ) }">
+          /...  
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+ 
