@@ -46,7 +46,7 @@
     <div *ngIf="inputText2.length > 2"> Searching for... {{inputText2}} </div> 
   </div>
   <div> 
-    <h2> - ngFor (Directive) & ngClass & ngStyle - </h2>
+    <h2> - ngFor (Directive) & ngClass & ngStyle & Pipes & Safe navigation operator - </h2>
     <div> Passengers list... </div>
     <ul>
       <li *ngFor="let person of passengers; let i = index">    <!-- "For of" Loop --> 
@@ -61,9 +61,18 @@
         </span>
         <!-- [ngStyle]="{ 'property1': 'value1', 'property2': 'value2' }" : 
               Add multiple css style properties, optional with a condition -->
-        <span [ngStyle]="{ color: ( person.checkedIn ? 'green' : 'red' ) }">
-          /...  
-        </span>
+        <div [ngStyle]="{ color: ( person.checkedIn ? 'green' : 'red' ) }">
+          Check-in Date: {{ person.checkedIn ? 
+          (person.checkInDate | date: 'y MMMM d' | uppercase) : '...Not checked in...' }}  
+        </div>
+        <div class="children">
+          <!-- Evaluates if person.children is available and then goes on ... --> 
+          # Children: {{ person.children?.length || 0 }}
+        </div>
+        <div style="color: blue"> 
+          <!-- useful for Debugging... --> 
+          {{ person | json }} 
+        </div>   
       </li>
     </ul>
   </div>
