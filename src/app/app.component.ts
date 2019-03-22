@@ -42,4 +42,4 @@ export class AppComponent {
     this.inputText4 = value; 
   }
 }
-console.log('test AppComponent', this);
+console.log('test AppComponent', this); 
