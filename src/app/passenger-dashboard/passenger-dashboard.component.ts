@@ -1,17 +1,7 @@
 import { Component } from '@angular/core';
 
-interface Child {
-  name: string,
-  age: number  
-}
-
-interface Passenger {     // custom Type (Description) 
-  id: number,
-  fullname: string,
-  checkedIn: boolean, 
-  checkInDate: number | null,     
-  children: Child[] | null
-}
+// Interfaces 
+import { Passenger } from './Interfaces/passenger.interface';
 
 @Component({
   /* Component properties */
