@@ -19,8 +19,6 @@ interface Passenger {     // custom Type (Description)
   templateUrl: './app.component.html',        // Content of HTML-Element 
   /*  template: '<h1 class="app"> Rendering App-root component... </h1>',  
       template: `               
-          <div class="app"> 
-            <h1> Rendering App-root component... </h1> 
             <p> Hello... {{ title }} !</p>
           </div>` , */
   styleUrls: [ './app.component.css' ]  // CSS-file for this Component  
