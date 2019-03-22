@@ -1,18 +1,5 @@
 import { Component } from '@angular/core';
 
-interface Child {
-  name: string,
-  age: number  
-}
-
-interface Passenger {     // custom Type (Description) 
-  id: number,
-  fullname: string,
-  checkedIn: boolean, 
-  checkInDate: number | null,     
-  children: Child[] | null
-}
-
 @Component({
   /* Component properties */
   selector: 'my-app-root',            // CSS-Selector -> HTML-Element (template) in 'index.html' 
@@ -54,14 +41,5 @@ export class AppComponent {
     console.log(value);
     this.inputText4 = value; 
   }
-
-  passengers: Passenger[] = [
-    { id: 66, fullname: 'Stephen', checkedIn: true, checkInDate: 1490742000000, 
-      children: null }, 
-    { id: 67, fullname: 'Rose', checkedIn: false, checkInDate: null, 
-      children: [ { name: 'Ted', age: 12 }, { name: 'Chloe', age: 7 } ] }, 
-    { id: 68, fullname: 'James', checkedIn: true, checkInDate: 1491606000000, 
-      children: [ { name: 'Jessica', age: 1 } ] }
-  ];
 }
-console.log('test', this);
+console.log('test AppComponent', this);

@@ -45,36 +45,8 @@
           (input)="handleChange($event.target.value)">
     <div *ngIf="inputText2.length > 2"> Searching for... {{inputText2}} </div> 
   </div>
-  <div> 
-    <h2> - ngFor (Directive) & ngClass & ngStyle & Pipes & Safe navigation operator - </h2>
-    <div> Passengers list... </div>
-    <ul>
-      <li *ngFor="let person of passengers; let i = index">    <!-- "For of" Loop --> 
-        <!-- [class.classname]="condition" : Add a single class, if condition is true -->
-        <span class="status"  [class.checked-in]="person.checkedIn"> </span>
-        <!-- [ngClass]="{ 'classname1': condition1, 'classname2': condition2 }" : 
-              Add multiple classes, if conditions are true -->
-        <span class="status"  [ngClass]="{ 'checked-in': person.checkedIn }"> </span>
-        <!-- [style.property]="condition" : Add a css style property, if condition is true --> 
-        <span [style.color]="( person.checkedIn ? 'green' : 'red' )">
-          #{{ i + 1 }} : id = {{ person.id }} , Name = {{ person.fullname }} 
-        </span>
-        <!-- [ngStyle]="{ 'property1': 'value1', 'property2': 'value2' }" : 
-              Add multiple css style properties, optional with a condition -->
-        <div [ngStyle]="{ color: ( person.checkedIn ? 'green' : 'red' ) }">
-          Check-in Date: {{ person.checkedIn ? 
-          (person.checkInDate | date: 'y MMMM d' | uppercase) : '...Not checked in...' }}  
-        </div>
-        <div class="children">
-          <!-- Evaluates if (property)? is available and then goes on ... --> 
-          # Children: {{ person.children?.length || 0 }}
-        </div>
-        <div style="color: blue"> 
-          <!-- useful for Debugging... --> 
-          {{ person | json }} 
-        </div>   
-      </li>
-    </ul>
-  </div>
+  
+  <!-- Subcomponent --> 
+  <passenger-dashboard> ...This won't be displayed... </passenger-dashboard>
 </div>
  
