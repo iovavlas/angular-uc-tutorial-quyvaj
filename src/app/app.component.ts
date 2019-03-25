@@ -23,6 +23,7 @@ export class AppComponent {
 
   constructor() {
     this.title = 'Ultimate Angular'; 
+    console.log('Inside AppComponent constructor...');
   }
 
   handleInput(event: any) :void {
@@ -42,4 +43,3 @@ export class AppComponent {
     this.inputText4 = value; 
   }
 }
-console.log('test AppComponent', this); 

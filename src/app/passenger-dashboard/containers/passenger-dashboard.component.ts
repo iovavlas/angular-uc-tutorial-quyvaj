@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // Interfaces 
-import { Passenger } from './Interfaces/passenger.interface';
+import { Passenger } from '../interfaces/passenger.interface';
 
 @Component({
   /* Component properties */
@@ -13,11 +13,13 @@ export class PassengerDashboardComponent implements OnInit {
 
   passengers: Passenger[];  
 
-  // constructor() { }
+  constructor() {
+    console.log('Inside PassengerDashboardComponent constructor...'); 
+  }
 
   /* lifecycle hook => a function called by Angular, when something happens... */
   ngOnInit() {    // e.g. (dynamic) Data fetching, Initializing... 
-    console.log('ngOnInit...');
+    console.log('Inside ngOnInit in PassengerDashboardComponent...');
     this.passengers = [
       { id: 66, fullname: 'Stephen', checkedIn: true, checkInDate: 1490742000000, 
         children: null }, 
@@ -28,4 +30,3 @@ export class PassengerDashboardComponent implements OnInit {
     ];
   }
 }
-console.log('test Subcomponent', this);
