@@ -1,8 +1,5 @@
 <div class="dashboardComponent"> 
     <h2> - ngFor (Directive) & ngClass & ngStyle & Pipes & Safe navigation operator - </h2>
-    <div> Passengers list... </div>
-    <passenger-count> Subcomponent </passenger-count>
-    <passenger-detail> Subcomponent </passenger-detail>
     <ul>
       <li *ngFor="let person of passengers; let i = index">    <!-- "For of" Loop --> 
         <!-- [class.classname]="condition" : Add a single class, if condition is true -->
@@ -29,5 +26,16 @@
           {{ person | json }} 
         </div>   
       </li>
-    </ul>
+    </ul> 
+    <br>
+
+    <h2> - Component Architecture - </h2>
+    <!-- Passing data from container into (sub)component with @Input --> 
+    <passenger-count  [items]="passengers"> 
+      ...Subcomponent... 
+    </passenger-count>
+    
+    <passenger-detail  *ngFor="let person of passengers"  [detail]="person"> 
+      ...Subcomponent... 
+    </passenger-detail>
 </div>

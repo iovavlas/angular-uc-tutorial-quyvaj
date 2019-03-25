@@ -1,3 +1,22 @@
 <div class="detailComponent"> 
-    <div> Detail Component... </div>
+  <!-- [ngClass]="{ 'classname1': condition1, 'classname2': condition2 }" : 
+        Add multiple classes, if conditions are true -->
+  <span class="status"  [ngClass]="{ 'checked-in': detail.checkedIn }"> </span>
+
+  <!-- [style.property]="condition" : Add a css style property, if condition is true --> 
+  <span [style.color]="( detail.checkedIn ? 'green' : 'red' )">
+    Name: {{ detail.fullname }} 
+  </span>
+
+  <!-- [ngStyle]="{ 'property1': 'value1', 'property2': 'value2' }" : 
+        Add multiple css style properties, optional with a condition -->
+  <div [ngStyle]="{ color: ( detail.checkedIn ? 'green' : 'red' ) }">
+    Check-in Date: {{ detail.checkedIn ? 
+    (detail.checkInDate | date: 'y MMMM d' | uppercase) : '...Not checked in...' }}  
+  </div>
+
+  <div class="children">
+    <!-- Evaluates if (property)? is available and then goes on ... --> 
+    # Children: {{ detail.children?.length || 0 }}
+  </div>
 </div>
