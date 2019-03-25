@@ -3,7 +3,8 @@ p {
 }
 
 .app {
-  background: #fff;
+  background: #fff; 
+  border: 1px dotted #000; 
 }
 
 
