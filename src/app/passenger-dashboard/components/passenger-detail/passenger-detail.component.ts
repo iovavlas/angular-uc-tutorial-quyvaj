@@ -32,6 +32,8 @@ export class PassengerDetailComponent {
   }
 
   toggleEdit() {
+    console.log('editing:', this.editing);
+    
     if(this.editing) {
       this.edit.emit(this.detail);       
     }

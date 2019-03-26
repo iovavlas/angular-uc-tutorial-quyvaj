@@ -30,11 +30,26 @@ export class PassengerDashboardComponent implements OnInit {
     ];
   }
 
-  handleEdit(eventObj) {
-    console.log('Inside handleEdit()...', eventObj);
+  handleEdit(event: Passenger) {
+    console.log('Inside handleEdit()...', event);
+
+    function myFunction(passenger: Passenger) {
+      if (passenger.id === event.id) {
+        //passenger.fullname = event.fullname;
+        //passenger = event;
+        passenger = Object.assign({}, passenger, event );  // merge the changes...  
+      }
+      return passenger;
+    }
+
+    console.log(this.passengers);
   }
 
-  handleRemove(eventObj) {
-    console.log('Inside handleRemove()...', eventObj);
+  handleRemove(event: Passenger) {
+    console.log('Inside handleRemove()...', event); 
+
+    this.passengers = this.passengers.filter( 
+      (passenger: Passenger) => passenger.id !== event.id 
+    );
   }
 }
