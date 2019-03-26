@@ -29,4 +29,12 @@ export class PassengerDashboardComponent implements OnInit {
         children: [ { name: 'Jessica', age: 1 } ] }
     ];
   }
+
+  handleEdit(eventObj) {
+    console.log('Inside handleEdit()...', eventObj);
+  }
+
+  handleRemove(eventObj) {
+    console.log('Inside handleRemove()...', eventObj);
+  }
 }

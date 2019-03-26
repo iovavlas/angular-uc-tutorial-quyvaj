@@ -21,6 +21,6 @@ export class PassengerCountComponent {
     if (!this.items) return;  // if there are no passengers available... 
 
     /*          Array        Callback function(param)     return..                */
-    return this.items.filter( (passenger: Passenger) => passenger.checkedIn).length;
+    return this.items.filter( (passenger: Passenger) => passenger.checkedIn ).length;
   }
 }

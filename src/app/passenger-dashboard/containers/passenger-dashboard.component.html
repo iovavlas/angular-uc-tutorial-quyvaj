@@ -30,13 +30,19 @@
     <br>
 
     <h2 style="color: blue"> - Component Architecture - </h2>
-    <!-- Passing data from the container (parent) into the (sub)component (children) 
+    <!-- Passing data from the container (parent) into the (sub)component (child) 
           with [property] binding and @Input --> 
     <passenger-count  [items]="passengers"> 
       ...Subcomponent... 
     </passenger-count>
     
-    <passenger-detail  *ngFor="let person of passengers"  [detail]="person"> 
+    <!-- Passing data from the container (parent) into the (sub)component (child) 
+          with [property] binding and @Input -->
+    <!-- Passing data from the (sub)component (child) into the container (parent) with              with (event) binding and @Output --> 
+    <passenger-detail *ngFor="let person of passengers"  
+                      [detail]="person"
+                      (edit)="handleEdit($event)"
+                      (remove)="handleRemove($event)"> 
       ...Subcomponent... 
     </passenger-detail>
 </div>

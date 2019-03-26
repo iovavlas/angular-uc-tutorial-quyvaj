@@ -1,7 +1,7 @@
 .dashboardComponent {
   background-color: rgb(196, 250, 247);   
   border: 1px dashed #2415f1; 
-  margin: 3px 3px; 
+  margin: 3px; 
 }
 
 .status {

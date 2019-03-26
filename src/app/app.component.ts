@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   /* Component properties */
-  selector: 'my-app-root',            // CSS-Selector -> HTML-Element (template) in 'index.html' 
+  selector: 'my-app-root',        // CSS-Selector -> HTML-Element (template) in 'index.html' 
   templateUrl: './app.component.html',        // Content of HTML-Element 
   /*  template: '<h1 class="app"> Rendering App-root component... </h1>',  
       template: `               
