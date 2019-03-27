@@ -19,7 +19,6 @@ export class AppComponent {
   inputText2: string = '';
   inputText3: string = '2 way databinding...';
   inputText4: string = '#ref...';
-  inputText5: string = 'ngif...';
 
   constructor() {
     this.title = 'Ultimate Angular'; 
