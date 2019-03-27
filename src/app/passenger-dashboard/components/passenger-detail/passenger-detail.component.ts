@@ -30,8 +30,8 @@ export class PassengerDetailComponent implements OnChanges {
     console.log('Inside ngOnChanges...???', changeObj);
 
     if (changeObj.detail.currentValue) {
-      //this.detail = changeObj.detail.currentValue;
-      this.detail = Object.assign( {}, changeObj.detail.currentValue );
+      this.detail = changeObj.detail.currentValue;
+      //this.detail = Object.assign( {}, changeObj.detail.currentValue );
     }
   }
 

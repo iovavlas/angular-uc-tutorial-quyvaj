@@ -1,6 +1,7 @@
 // Angular Modules 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';   // e.g. Directives (ngIf, ngFor) and Pipes 
+import { HttpModule } from '@angular/http';       // for http-requests via a service 
 
 // Containers / smart components 
 import { PassengerDashboardComponent } from './containers/passenger-dashboard.component'; 
@@ -13,7 +14,8 @@ import { PassengerDetailComponent } from './components/passenger-detail/passenge
 import { PassengerDashboardService } from './passenger-dashboard.service';  
 
 @NgModule({
-  imports:      [ CommonModule ],
+  imports:      [ CommonModule,
+                  HttpModule ],
   declarations: [ PassengerDashboardComponent, 
                   PassengerCountComponent, 
                   PassengerDetailComponent ],   

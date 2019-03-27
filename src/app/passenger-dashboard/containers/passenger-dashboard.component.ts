@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 // Interfaces 
 import { Passenger } from '../interfaces/passenger.interface';
 
+// Services 
+import { PassengerDashboardService } from '../passenger-dashboard.service'; 
+
 @Component({
   /* Component properties */
   selector: 'passenger-dashboard',                    // HTML-Element in 'app.component.html' 
@@ -13,21 +16,24 @@ export class PassengerDashboardComponent implements OnInit {
 
   passengers: Passenger[];  
 
-  constructor() {
+  // Depedency Injection: Inject the Service into the component-constructor... 
+  constructor(private passengerService: PassengerDashboardService) {
+    // automatically:   this.passengerService = PassengerDashboardService; 
     console.log('Inside PassengerDashboardComponent constructor...'); 
+    console.log('...Service: ', passengerService);
   }
 
   /* lifecycle hook => a function called by Angular, when something happens... */
   ngOnInit() {    // e.g. (dynamic) Data fetching, Initializing... 
     console.log('Inside ngOnInit in PassengerDashboardComponent...');
-    this.passengers = [
-      { id: 66, fullname: 'Stephen', checkedIn: true, checkInDate: 1490742000000, 
-        children: null }, 
-      { id: 67, fullname: 'Rose', checkedIn: false, checkInDate: null, 
-        children: [ { name: 'Ted', age: 12 }, { name: 'Chloe', age: 7 } ] }, 
-      { id: 68, fullname: 'James', checkedIn: true, checkInDate: 1491606000000, 
-        children: [ { name: 'Jessica', age: 1 } ] }
-    ];
+
+    /* use the Service to fetch the data, instead of hard-coding it here... */
+    
+    //this.passengers = this.passengerService.getPassengers();  // without a Http Request.. 
+
+    this.passengerService
+      .getPassengers()
+      .subscribe( (data: Passenger[]) => this.passengers = data );
   }
 
   handleEdit(event: Passenger) {
