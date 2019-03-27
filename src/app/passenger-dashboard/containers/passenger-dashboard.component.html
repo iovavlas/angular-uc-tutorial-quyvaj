@@ -29,12 +29,18 @@
     </ul> 
     <br>
 
-    <h2 style="color: blue"> - Component Architecture - </h2>
+    <h2 style="color: blue"> 
+      - Component Architecture - <br>
+      - Services, Http and Observables - 
+    </h2> 
     <!-- Passing data from the container (parent) into the (sub)component (child) 
           with [property] binding and @Input --> 
     <passenger-count  [items]="passengers"> 
       ...Subcomponent... 
     </passenger-count>
+    <div *ngFor="let person of passengers"> 
+      {{ person.fullname }} 
+    </div>
     
     <!-- Passing data from the container (parent) into the (sub)component (child) 
           with [property] binding and @Input -->

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
 // Interfaces 
 import { Passenger } from '../../interfaces/passenger.interface';
@@ -10,7 +10,7 @@ import { Passenger } from '../../interfaces/passenger.interface';
   styleUrls: [ './passenger-detail.component.css',     // CSS-files for this Component
                '../../containers/passenger-dashboard.component.css' ]      
 })
-export class PassengerDetailComponent {
+export class PassengerDetailComponent implements OnChanges {
   @Input()  // pass data from the parent (container) into the child (subcomponent) 
   detail: Passenger; 
 
@@ -26,6 +26,15 @@ export class PassengerDetailComponent {
     console.log('Inside PassengerDetailComponent constructor...'); 
   }
 
+  ngOnChanges(changeObj) {
+    console.log('Inside ngOnChanges...???', changeObj);
+
+    if (changeObj.detail.currentValue) {
+      //this.detail = changeObj.detail.currentValue;
+      this.detail = Object.assign( {}, changeObj.detail.currentValue );
+    }
+  }
+
   onNameChange(value: string) {
     // console.log(value); 
     this.detail.fullname = value;    
@@ -34,7 +43,7 @@ export class PassengerDetailComponent {
   toggleEdit() {
     console.log('editing:', this.editing);
     
-    if(this.editing) {
+    if (this.editing) {
       this.edit.emit(this.detail);       
     }
     this.editing = !this.editing;
