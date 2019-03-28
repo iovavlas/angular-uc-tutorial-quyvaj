@@ -39,15 +39,14 @@ export class PassengerDashboardComponent implements OnInit {
   handleEdit(event: Passenger) {
     console.log('Inside handleEdit()...', event);
 
-    function myFunction(passenger: Passenger) {
-      if (passenger.id === event.id) {
-        //passenger.fullname = event.fullname;
-        //passenger = event;
-        passenger = Object.assign({}, passenger, event );  // merge the changes...  
+    this.passengers = this.passengers.map( (passenger: Passenger) => {
+        if (passenger.id === event.id) {
+          //passenger = event;
+          passenger = Object.assign({}, passenger, event );  // merge the changes...  
+        }
+        return passenger;
       }
-      return passenger;
-    }
-
+    );
     console.log(this.passengers);
   }
 

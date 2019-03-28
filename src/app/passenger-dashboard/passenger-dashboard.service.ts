@@ -23,7 +23,7 @@ export class PassengerDashboardService {
 
   /* Version without the actual Http-Request... */
   getPassengers(): Passenger[] {
-
+    
     return [  
       { id: 66, fullname: 'Stephen', checkedIn: true, checkInDate: 1490742000000, 
         children: null }, 
@@ -35,8 +35,8 @@ export class PassengerDashboardService {
   } 
 
   /*getPassengers(): Observable<Passenger[]> {
-    return this.http
-          .get(PASSENGER_API)
+    return this.http            // Http {}
+          .get(PASSENGER_API)   // Observable {} 
           .map( (response: Response) => response.json() );
   }*/
 }
