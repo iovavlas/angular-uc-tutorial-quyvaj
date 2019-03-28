@@ -21,7 +21,7 @@ export class PassengerDashboardService {
     console.log('...http', http);
   }
 
-  /* Version without the actual Http-Request... 
+  /* Version without the actual Http-Request... */
   getPassengers(): Passenger[] {
 
     return [  
@@ -32,11 +32,11 @@ export class PassengerDashboardService {
       { id: 68, fullname: 'James', checkedIn: true, checkInDate: 1491606000000, 
         children: [ { name: 'Jessica', age: 1 } ] }
     ];
-  } */
+  } 
 
-  getPassengers(): Observable<Passenger[]> {
+  /*getPassengers(): Observable<Passenger[]> {
     return this.http
           .get(PASSENGER_API)
           .map( (response: Response) => response.json() );
-  }
+  }*/
 }
