@@ -29,11 +29,14 @@ export class PassengerDashboardComponent implements OnInit {
 
     /* use the Service to fetch the data, instead of hard-coding it here... */
     
-    this.passengers = this.passengerService.getPassengers();  // without a Http Request.. 
+    // this.passengers = this.passengerService.getPassengers();  // without a Http Request.. 
 
-    /*this.passengerService
+    this.passengerService
       .getPassengers()
-      .subscribe( (data: Passenger[]) => this.passengers = data );*/
+      .subscribe( (data: Passenger[]) => { 
+        console.log(data);
+        return this.passengers = data 
+      } );
   }
 
   handleEdit(event: Passenger) {

@@ -9,7 +9,8 @@ import 'rxjs/add/operator/map';
 // Interfaces 
 import { Passenger } from './interfaces/passenger.interface';
 
-const PASSENGER_API: string = '/api/passengers';  
+//const PASSENGER_API: string = '/api/passengers';  
+const PASSENGER_API: string = 'https://raw.githubusercontent.com/iovavlas/angular-uc-tutorial-quyvaj/master/src/db.json'; 
 
 // my Http-Service...
 @Injectable()   // tells Angular, that we can inject things in the constructor...  
@@ -22,7 +23,7 @@ export class PassengerDashboardService {
   }
 
   /* Version without the actual Http-Request... */
-  getPassengers(): Passenger[] {
+  /*getPassengers(): Passenger[] {
     
     return [  
       { id: 66, fullname: 'Stephen', checkedIn: true, checkInDate: 1490742000000, 
@@ -32,11 +33,11 @@ export class PassengerDashboardService {
       { id: 68, fullname: 'James', checkedIn: true, checkInDate: 1491606000000, 
         children: [ { name: 'Jessica', age: 1 } ] }
     ];
-  } 
+  }*/ 
 
-  /*getPassengers(): Observable<Passenger[]> {
+  getPassengers(): Observable<Passenger[]> {
     return this.http            // Http {}
           .get(PASSENGER_API)   // Observable {} 
-          .map( (response: Response) => response.json() );
-  }*/
+          .map( (response: Response) => response.json().passengers );
+  }
 }
