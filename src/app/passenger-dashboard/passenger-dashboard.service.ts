@@ -2,14 +2,14 @@
 import { Injectable } from '@angular/core'; 
 import { Http, Response } from '@angular/http'; 
 
-// rxjs
+// RxJS
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'; 
 
 // Interfaces 
 import { Passenger } from './interfaces/passenger.interface';
 
-//const PASSENGER_API: string = '/api/passengers';  
+//const PASSENGER_API: string = '/api/passengers';    // siehe 'webpack.config.js' ... 
 const PASSENGER_API: string = 'https://raw.githubusercontent.com/iovavlas/angular-uc-tutorial-quyvaj/master/src/db.json'; 
 
 // my Http-Service...
@@ -22,9 +22,8 @@ export class PassengerDashboardService {
     console.log('...http', http);
   }
 
-  /* Version without the actual Http-Request... */
+  /** Version without the actual Http-Request... */
   /*getPassengers(): Passenger[] {
-    
     return [  
       { id: 66, fullname: 'Stephen', checkedIn: true, checkInDate: 1490742000000, 
         children: null }, 
@@ -37,7 +36,10 @@ export class PassengerDashboardService {
 
   getPassengers(): Observable<Passenger[]> {
     return this.http            // Http {}
-          .get(PASSENGER_API)   // Observable {} 
-          .map( (response: Response) => response.json().passengers );
+          .get(PASSENGER_API)   // Observable {} (it's like a Data stream)
+          .map( (response: Response) => {     // response = Observable {}
+            console.log('...response', response);     
+            return response.json().passengers   // 'passengers' is the [property] of the JSON-Object in 'db.json' in line #2 
+          } );   
   }
 }

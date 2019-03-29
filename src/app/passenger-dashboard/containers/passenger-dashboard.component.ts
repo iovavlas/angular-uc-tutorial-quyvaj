@@ -26,16 +26,15 @@ export class PassengerDashboardComponent implements OnInit {
   /* lifecycle hook => a function called by Angular, when something happens... */
   ngOnInit() {    // e.g. (dynamic) Data fetching, Initializing... 
     console.log('Inside ngOnInit in PassengerDashboardComponent...');
-
-    /* use the Service to fetch the data, instead of hard-coding it here... */
     
     // this.passengers = this.passengerService.getPassengers();  // without a Http Request.. 
 
+    /* use the Service to fetch the data, instead of hard-coding it here... */
     this.passengerService
-      .getPassengers()
-      .subscribe( (data: Passenger[]) => { 
-        console.log(data);
-        return this.passengers = data 
+      .getPassengers()                          // Observable {}
+      .subscribe( (data: Passenger[]) => {      // Subscriber {} gets the response/data 
+        console.log('...data', data);           // Array[] of Passengers 
+        return this.passengers = data;          // here the assignment... 
       } );
   }
 
@@ -44,8 +43,8 @@ export class PassengerDashboardComponent implements OnInit {
 
     this.passengers = this.passengers.map( (passenger: Passenger) => {
         if (passenger.id === event.id) {
-          //passenger = event;
-          passenger = Object.assign({}, passenger, event );  // merge the changes...  
+          //passenger = event;  (via Reference...) 
+          passenger = Object.assign( {}, passenger, event );  // merge the changes in a new Object...  
         }
         return passenger;
       }
