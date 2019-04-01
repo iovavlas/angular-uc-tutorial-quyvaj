@@ -29,7 +29,7 @@ export class PassengerDashboardComponent implements OnInit {
     
     // this.passengers = this.passengerService.getPassengers();  // without a Http Request.. 
 
-    /* use the Service to fetch the data, instead of hard-coding it here... */
+    /* using the Service to fetch the data, instead of hard-coding it here... */
     this.passengerService
       .getPassengers()                          // Observable {}
       .subscribe( (data: Passenger[]) => {      // Subscriber {} gets the response/data 
@@ -38,7 +38,8 @@ export class PassengerDashboardComponent implements OnInit {
       } );
   }
 
-  handleEdit(event: Passenger) {
+  // without a Http PUT Request...
+  /*handleEdit(event: Passenger) {
     console.log('Inside handleEdit()...', event);
 
     this.passengers = this.passengers.map( (passenger: Passenger) => {
@@ -50,13 +51,43 @@ export class PassengerDashboardComponent implements OnInit {
       }
     );
     console.log(this.passengers);
+  }*/
+
+  handleEdit(event: Passenger) {
+    console.log('Inside handleEdit()...', event);
+
+    this.passengerService
+      .updatePassenger(event)
+      .subscribe( (data: Passenger) => {   
+        this.passengers = this.passengers.map( (passenger: Passenger) => {
+          if (passenger.id === data.id) {
+            passenger = Object.assign( {}, passenger, data );   
+          }
+          return passenger;
+        } );
+        console.log('...data', data);            
+      } );
   }
 
-  handleRemove(event: Passenger) {
+  // without a Http PUT Request...
+  /*handleRemove(event: Passenger) { 
     console.log('Inside handleRemove()...', event); 
 
     this.passengers = this.passengers.filter( 
       (passenger: Passenger) => passenger.id !== event.id 
     );
+  }*/
+
+  handleRemove(event: Passenger) { 
+    console.log('Inside handleRemove()...', event); 
+
+    this.passengerService
+      .removePassenger(event)
+      .subscribe( (data: Passenger) => {   
+        this.passengers = this.passengers.filter( 
+          (passenger: Passenger) => passenger.id !== data.id 
+        );
+        console.log('...data', data);            
+      } );
   }
 }
