@@ -5,6 +5,8 @@ import { Http, Response } from '@angular/http';
 // RxJS
 import { Observable, of } from 'rxjs';
 import 'rxjs/add/operator/map'; 
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 // Interfaces 
 import { Passenger } from './interfaces/passenger.interface';
@@ -41,7 +43,8 @@ export class PassengerDashboardService {
           .map( (response: Response) => {     // response = Observable {}
             console.log('...response GET', response);     
             return response.json().passengers   // 'passengers' is the [property] of the JSON-Object in 'db.json' in line #2 
-          } );   
+          } );
+          //.catch( (error: any) => Observable.throw( error.json() ) );   
   }
 
   // Http-Request -> PUT
@@ -61,7 +64,7 @@ export class PassengerDashboardService {
             .map( (response: Response) => { 
               console.log('...response DELETE', response);     
               return response.json();
-            } );  */ 
+            } ); */ 
     return of(passenger);
   }
 }
