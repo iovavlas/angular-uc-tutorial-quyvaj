@@ -31,7 +31,7 @@ export class PassengerViewerComponent implements OnInit {
     /* using the Service to fetch the data, instead of hard-coding it here... */
     this.passengerService.getPassenger(0)       // Observable {}
       .subscribe( (data: Passenger) => {        // Subscriber {} gets the response/data 
-        console.log('...data (viewer)', data);           // Array[] of Passengers 
+        console.log('...data (viewer)', data);            
         return this.passenger = data;           // here the assignment... 
       } ); 
   }

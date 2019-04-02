@@ -17,3 +17,7 @@
 .status.checked-in {
     background: #2ecc71;
 }
+
+h2 {
+  color: blue;
+}
