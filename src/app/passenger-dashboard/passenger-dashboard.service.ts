@@ -36,7 +36,7 @@ export class PassengerDashboardService {
     ];
   }*/ 
 
-  // Http-Request <- GET
+  // Http-Request <- GET 
   getPassengers(): Observable<Passenger[]> {
     return this.http            // Http {}
           .get(PASSENGER_API)   // Observable {} (it's like a Data stream)
