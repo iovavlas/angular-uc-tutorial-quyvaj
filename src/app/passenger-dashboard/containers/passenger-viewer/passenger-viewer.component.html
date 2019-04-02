@@ -1,6 +1,10 @@
 <div class="viewerComponent"> 
   <h2 style="color: blue"> - Template-driven Forms, Inputs and Validation - </h2>
   <div>
-    {{ passenger | json }}  
+    <!-- Passing data from the container (parent) into the (sub)component (child) 
+          with [property] binding and @Input -->
+    <passenger-form  [detail]="passenger">
+      ...Subcomponent...
+    </passenger-form>
   </div>
 </div>
