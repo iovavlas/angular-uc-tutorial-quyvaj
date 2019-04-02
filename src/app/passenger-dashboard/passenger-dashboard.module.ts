@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';       // for http-requests via a ser
 import { FormsModule } from '@angular/forms';     // e.g. for 2 way Binding and forms
 
 // Containers / smart components 
-import { PassengerDashboardComponent } from './containers/passenger-dashboard.component'; 
+import { PassengerDashboardComponent } from './containers/passenger-dashboard/passenger-dashboard.component'; 
 import { PassengerViewerComponent } from './containers/passenger-viewer/passenger-viewer.component';
 
 // Dumb components 

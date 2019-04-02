@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 // Interfaces 
-import { Passenger } from '../interfaces/passenger.interface';
+import { Passenger } from '../../interfaces/passenger.interface';
 
 // Services 
-import { PassengerDashboardService } from '../passenger-dashboard.service'; 
+import { PassengerDashboardService } from '../../passenger-dashboard.service'; 
 
 @Component({
   /* Component properties */

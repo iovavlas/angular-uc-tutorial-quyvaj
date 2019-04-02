@@ -8,7 +8,7 @@ import { Passenger } from '../../interfaces/passenger.interface';
   selector: 'passenger-detail',                        // HTML-Element  
   templateUrl: './passenger-detail.component.html',    // Content of HTML-Element 
   styleUrls: [ './passenger-detail.component.css',     // CSS-files for this Component
-               '../../containers/passenger-dashboard.component.css' ]      
+               '../../containers/passenger-dashboard/passenger-dashboard.component.css' ]  
 })
 export class PassengerDetailComponent implements OnChanges {
   @Input()  // pass data from the parent (container) into the child (subcomponent) 
