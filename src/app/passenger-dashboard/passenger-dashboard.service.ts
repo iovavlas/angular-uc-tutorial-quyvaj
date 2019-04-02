@@ -69,11 +69,15 @@ export class PassengerDashboardService {
   }
 
   getPassenger(id: number): Observable<Passenger> {
-    return this.http            // Http {}
-          .get(PASSENGER_API)   // Observable {} (it's like a Data stream)
+    return this.http                          // Http {}
+          .get(PASSENGER_API)                 // Observable {} (it's like a Data stream)
           .map( (response: Response) => {     // response = Observable {}
-            console.log('...response GET (id)', response);     
-            return response.json().passengers[id]   // 'passengers' is the [property] of the JSON-Object in 'db.json' in line #2 
+            console.log('...response GET (id)', response.json().passengers); 
+            for (let i=0; i<response.json().passengers.length; i++) {
+              if (id === response.json().passengers[i].id) {
+                return response.json().passengers[i];
+              }
+            }
           } );
   }
 }

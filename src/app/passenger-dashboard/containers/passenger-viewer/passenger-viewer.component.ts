@@ -29,7 +29,8 @@ export class PassengerViewerComponent implements OnInit {
     //this.passenger = this.passengerService.getPassenger(1);  // without a Http Request.. 
 
     /* using the Service to fetch the data, instead of hard-coding it here... */
-    this.passengerService.getPassenger(0)       // Observable {}
+    this.passengerService
+      .getPassenger(5)       // Observable {}
       .subscribe( (data: Passenger) => {        // Subscriber {} gets the response/data 
         console.log('...data (viewer)', data);            
         return this.passenger = data;           // here the assignment... 
