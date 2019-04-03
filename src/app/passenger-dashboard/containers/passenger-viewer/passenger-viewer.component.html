@@ -3,7 +3,9 @@
   <div>
     <!-- Passing data from the container (parent) into the (sub)component (child) 
           with [property] binding and @Input -->
-    <passenger-form  [detail]="passenger">
+    <!-- Passing data from the (sub)component (child) into the container (parent) with              with (event) binding and @Output --> 
+    <passenger-form  [detail]="passenger"
+                      (update)="onUpdatePassenger($event)">
       ...Subcomponent...
     </passenger-form>
   </div>

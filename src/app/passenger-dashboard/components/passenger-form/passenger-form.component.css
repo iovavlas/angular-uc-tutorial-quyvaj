@@ -3,3 +3,8 @@
   border: 1px groove #1536f1; 
   margin: 3px 3px; 
 }
+
+.error {
+  color: #da6969;
+  font-size: 12px;
+}

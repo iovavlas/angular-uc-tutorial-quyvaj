@@ -8,5 +8,6 @@ export interface Passenger {     // custom Type (Description)
   fullname: string,
   checkedIn: boolean, 
   checkInDate: number | null,     
+  //checkInDate?: number,     
   children: Child[] | null
 }

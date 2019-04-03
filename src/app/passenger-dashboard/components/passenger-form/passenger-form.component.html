@@ -1,17 +1,82 @@
 <div class="formComponent">
-  <form  #form="ngForm"  novalidate>
+  <form  #form="ngForm"  novalidate
+        (ngSubmit)="handleSubmit(form.value, form.valid)">
+    <div>
+      Original Passenger Data: 
+    </div>
     {{ detail | json }}
 
     <div>
       Passenger name: 
-      <input type="text" name="fullname"  [ngModel]="detail?.fullname">
+      <input type="text" name="fullname"  
+      [ngModel]="detail?.fullname"  #fullname="ngModel"  required>
+      {{ fullname.value }} <br>
+      <!-- 'dirty': validate only AFTER the User has interacted with the form -->  
+      <div  *ngIf="fullname.errors?.required && fullname.dirty"  class="error">
+        Passenger name is required (Errors): {{ fullname.errors | json }} 
+      </div>
     </div>
 
     <div>
-      Passenger id: 
-      <input type="number" name="id"  [ngModel]="detail?.id">
+      Passenger ID: 
+      <input type="number" name="id"  
+      [ngModel]="detail?.id"  #id="ngModel"  required  minlength="1">
+      {{ id.value }} <br>
+      <!-- 'touched': validate only if the User has clicked on the input and then left the input, without typing anything --> 
+      <div  *ngIf="(id.errors?.required || id.errors?.minlength) && id.touched"  class="error">
+        Passenger ID is invalid (Errors): {{ id.errors | json }} 
+      </div>
+    </div> 
+
+    <!-- Radio Buttons... 
+    <div>
+      Checked in: 
+      <label>
+        <input type="radio" name="checkedIn" [value]="true"  
+        [ngModel]="detail?.checkedIn"  (ngModelChange)="toggleCheckIn($event)"> Yes
+      </label>
+      <label>
+        <input type="radio" name="checkedIn" [value]="false"  
+        [ngModel]="detail?.checkedIn"  (ngModelChange)="toggleCheckIn($event)"> No
+      </label>
+    </div> -->
+    <div>
+      Checked in: 
+      <label>
+        <input type="checkbox" name="checkedIn"   
+        [ngModel]="detail?.checkedIn"  (ngModelChange)="toggleCheckIn($event)"> 
+      </label> 
     </div>
 
-    {{ form.value | json }}
+    <!-- *ngIf="detail?.checkedIn" is not correct! That's the original value. 
+          We need the actual form value... --> 
+    <div  *ngIf="form.value.checkedIn"> 
+      Check in date: 
+      <input type="number" name="checkInDate"  [ngModel]="detail?.checkInDate">
+    </div>
+
+    <!-- Den douleuei swsta! Des to diko tou paradeigma... --> 
+    <div>
+      Children: 
+      <select name="children"  [ngModel]="detail?.children">  
+        <option [value]="detail?.children[0]"> 
+          {{ detail?.children[0]?.name }}      
+        </option>
+      </select>
+    </div>
+
+    <div>
+      Template / Form generated Passenger Data: <br>
+      {{ form.value | json }}
+    </div>
+
+    <div>
+      Valid: {{ form.valid | json }} <br>
+      Invalid: {{ form.invalid | json }}
+    </div>
+
+    <button type="submit"  [disabled]="form.invalid"> 
+      Update passenger (not working)
+    </button>  
   </form>
 </div>
