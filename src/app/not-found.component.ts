@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'not-found',
   template: `
     <div>
-      Ooooooooppppssss! Not found... (404) --> <a routerLink="/"> go home </a> ? 
+      Ooooooooppppssss! Not found... (404) --> go <a routerLink="/"> Home </a> ? 
     </div>
   `
 })

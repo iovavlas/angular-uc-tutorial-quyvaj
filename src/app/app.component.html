@@ -56,10 +56,21 @@
 
   <br>
 
-  <!-- Router Navigation --> 
+  <h2> - Component Routing - </h2> 
   <app-home> ...This won't be displayed... </app-home> 
-  <router-outlet> </router-outlet>  <!-- Route assignment in 'app.module.ts' -->
-  <not-found> </not-found> 
-  <a routerLink="/"> Home </a>
-  <a routerLink="/oops"> 404 </a>
+  <not-found> ...This won't be displayed... </not-found> <br>
+  <div>
+    <nav class="nav">
+      <a routerLink="/"  
+      routerLinkActive="active"     
+      [routerLinkActiveOptions]="{ exact: true }"> 
+        Home 
+      </a>
+      <a routerLink="/oops" 
+      routerLinkActive="active"> 
+        404 
+      </a>
+      <router-outlet> </router-outlet>  <!-- see Route assignment in 'app.module.ts' -->
+    </nav>
+  </div>
 </div>
