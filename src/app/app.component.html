@@ -49,9 +49,17 @@
   <!-- Subcomponent: container / smart component --> 
   <passenger-dashboard> ...This won't be displayed... </passenger-dashboard>
 
-  <br>
+  <br/>
 
   <!-- Subcomponent: container / smart component --> 
   <passenger-viewer> ...This won't be displayed... </passenger-viewer>
+
+  <br>
+
+  <!-- Router Navigation --> 
+  <app-home> ...This won't be displayed... </app-home> 
+  <router-outlet> </router-outlet>  <!-- Route assignment in 'app.module.ts' -->
+  <not-found> </not-found> 
+  <a routerLink="/"> Home </a>
+  <a routerLink="/oops"> 404 </a>
 </div>
- 

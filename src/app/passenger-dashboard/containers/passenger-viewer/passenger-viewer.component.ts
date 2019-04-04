@@ -47,6 +47,6 @@ export class PassengerViewerComponent implements OnInit {
       this.passenger = Object.assign( {}, this.passenger, data );  
     });
     */
-    this.passenger = event;
+    this.passenger = event; // the Property-sequence inside the Passenger-object doesn't matter
   }
 }
