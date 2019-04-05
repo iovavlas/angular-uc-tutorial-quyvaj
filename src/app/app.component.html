@@ -60,6 +60,7 @@
   <app-home> ...This won't be displayed... </app-home> 
   <not-found> ...This won't be displayed... </not-found> <br>
   <div>
+    <!-- hard coded links --> 
     <nav class="nav">
       <a routerLink="/"  
       routerLinkActive="active"     
@@ -70,7 +71,17 @@
       routerLinkActive="active"> 
         404 
       </a>
-      <router-outlet> </router-outlet>  <!-- see Route assignment in 'app.module.ts' -->
+      <router-outlet> </router-outlet>  <!-- see Route assignment in 'app.module.ts' --> 
+    </nav>  
+    <!-- Dynamic navigation with ngFor -->
+    <nav class="nav">
+      <a *ngFor="let item of nav"
+      [routerLink]="item.link"  
+      routerLinkActive="active"     
+      [routerLinkActiveOptions]="{ exact: item.exact }"> 
+        {{ item.name }}
+      </a>
+      <router-outlet> </router-outlet>  <!-- see Route assignment in 'app.module.ts' --> 
     </nav>
   </div>
 </div>

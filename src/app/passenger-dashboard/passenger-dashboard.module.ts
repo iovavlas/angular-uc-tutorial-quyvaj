@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';   // e.g. Directives (ngIf, ngFor) and Pipes 
 import { HttpModule } from '@angular/http';       // for http-requests via a service 
 import { FormsModule } from '@angular/forms';     // e.g. for 2 way Binding and forms
+import { RouterModule, Routes } from '@angular/router';   // for routing 
 
 // Containers / smart components 
 import { PassengerDashboardComponent } from './containers/passenger-dashboard/passenger-dashboard.component'; 
@@ -17,10 +18,16 @@ import { PassengerFormComponent } from
 // Services 
 import { PassengerDashboardService } from './passenger-dashboard.service';  
 
+// Routes
+const routes: Routes = [
+  { path: 'passengers', component: PassengerDashboardComponent }
+];
+
 @NgModule({
   imports:      [ CommonModule,
                   HttpModule, 
-                  FormsModule ],
+                  FormsModule,
+                  RouterModule.forChild(routes) ],
   declarations: [ PassengerDashboardComponent, 
                   PassengerViewerComponent,
                   PassengerCountComponent, 

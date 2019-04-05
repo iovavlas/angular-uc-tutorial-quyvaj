@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 
+interface Nav {
+  link: string,
+  exact: boolean, 
+  name: string  
+}
+
 @Component({
   /* Component properties */
   selector: 'my-app-root',        // CSS-Selector -> HTML-Element (template) in 'index.html' 
@@ -41,4 +47,22 @@ export class AppComponent {
     console.log(value);
     this.inputText4 = value; 
   }
+
+  nav: Nav[] = [
+    {
+      link: "/", 
+      exact: true, 
+      name: "Home"
+    }, 
+    {
+      link: "/passengers", 
+      exact: true, 
+      name: "Passengers Dashboard"
+    },
+    {
+      link: "/oops", 
+      exact: false, 
+      name: "404"
+    }
+  ];
 }
