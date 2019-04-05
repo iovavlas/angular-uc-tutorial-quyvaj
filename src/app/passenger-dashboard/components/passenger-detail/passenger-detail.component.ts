@@ -15,10 +15,14 @@ export class PassengerDetailComponent implements OnChanges {
   detail: Passenger; 
 
   @Output()  // pass data from the child (subcomponent) into the parent (container) 
-  edit: EventEmitter<any> = new EventEmitter();
+  //edit: EventEmitter<any> = new EventEmitter();
+  edit: EventEmitter<Passenger> = new EventEmitter<Passenger>();
   
   @Output()  // pass data from the child (subcomponent) into the parent (container) 
-  remove: EventEmitter<any> = new EventEmitter(); 
+  remove: EventEmitter<Passenger> = new EventEmitter<Passenger>(); 
+
+  @Output()  // pass data from the child (subcomponent) into the parent (container) 
+  view: EventEmitter<Passenger> = new EventEmitter<Passenger>(); 
 
   editing: boolean = false; 
 
@@ -50,7 +54,12 @@ export class PassengerDetailComponent implements OnChanges {
   }
 
   onRemove() {
-    console.log('onRemove');
+    console.log('onRemove...');
     this.remove.emit(this.detail);
+  }
+
+  goToPassenger() {
+    console.log('goToPassenger...');
+    this.view.emit(this.detail); 
   }
 }

@@ -16,13 +16,14 @@ import { NotFoundComponent } from './not-found.component';
 // Routes
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' }, 
+  //{ path: '',   redirectTo: 'passengers', pathMatch: 'full' }, 
   { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
   imports:      [ // Angular Modules 
                   BrowserModule, CommonModule, FormsModule, 
-                  RouterModule.forRoot(routes),  
+                  RouterModule.forRoot(routes, { useHash: false }),  
                   // custom Modules 
                   PassengerDashboardModule ],
   declarations: [ AppComponent, HomeComponent, NotFoundComponent ],

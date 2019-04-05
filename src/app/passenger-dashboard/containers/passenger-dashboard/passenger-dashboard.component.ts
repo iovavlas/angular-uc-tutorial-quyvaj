@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';   // for routing 
 
 // Interfaces 
 import { Passenger } from '../../interfaces/passenger.interface';
@@ -17,7 +18,10 @@ export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];  
 
   // Depedency Injection: Inject the Service into the component-constructor... 
-  constructor(private passengerService: PassengerDashboardService) {
+  constructor(
+    private passengerService: PassengerDashboardService, 
+    private router: Router
+    ) {
     // automatically:   this.passengerService = PassengerDashboardService; 
     console.log('Inside PassengerDashboardComponent constructor...'); 
     console.log('...Service: ', passengerService);
@@ -89,5 +93,11 @@ export class PassengerDashboardComponent implements OnInit {
         );
         console.log('...data', data);            
       } );
+  }
+
+  handleView(event: Passenger) { 
+    console.log('Inside handleView()...', event); 
+
+    this.router.navigate(['/passengers', event.id]);    // e.g. '/passengers/1' 
   }
 }

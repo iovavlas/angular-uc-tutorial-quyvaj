@@ -48,7 +48,8 @@
     <passenger-detail *ngFor="let person of passengers"  
                       [detail]="person"
                       (edit)="handleEdit($event)"
-                      (remove)="handleRemove($event)"> 
+                      (remove)="handleRemove($event)"
+                      (view)="handleView($event)"> 
       ...Subcomponent... 
     </passenger-detail>
 </div>
