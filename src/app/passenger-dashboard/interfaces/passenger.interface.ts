@@ -9,5 +9,5 @@ export interface Passenger {     // custom Type (Description)
   checkedIn: boolean, 
   checkInDate: number | null,     
   //checkInDate?: number,     
-  children: Child[] | null
+  children: Child[] | null 
 }
