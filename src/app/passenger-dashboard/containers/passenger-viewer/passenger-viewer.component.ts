@@ -11,9 +11,9 @@ import { PassengerDashboardService } from '../../passenger-dashboard.service';
 
 @Component({
   /* Component properties */
-  selector: 'passenger-viewer',                        // HTML-Element  
-  templateUrl: './passenger-viewer.component.html',    // Content of the HTML-Element 
-  styleUrls: ['./passenger-viewer.component.css']    // CSS-file for this Component  
+  selector: 'passenger-viewer',                         // HTML-Element  
+  templateUrl: './passenger-viewer.component.html',     // Content of the HTML-Element 
+  styleUrls: ['./passenger-viewer.component.css']       // CSS-file for this Component  
 })
 export class PassengerViewerComponent implements OnInit {
   passenger: Passenger;

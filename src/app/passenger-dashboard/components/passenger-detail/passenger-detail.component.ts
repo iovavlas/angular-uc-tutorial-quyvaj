@@ -30,12 +30,13 @@ export class PassengerDetailComponent implements OnChanges {
     console.log('Inside PassengerDetailComponent constructor...'); 
   }
 
-  ngOnChanges(changeObj) {
+  // in order to break the binding between the parent and the child component... 
+  ngOnChanges(changeObj) {    // executed before ngOnInit()...
     console.log('Inside ngOnChanges...', changeObj);
 
     if (changeObj.detail.currentValue) {
       //this.detail = changeObj.detail.currentValue;  // via reference... 
-      this.detail = Object.assign( {}, changeObj.detail.currentValue );
+      this.detail = Object.assign( {}, changeObj.detail.currentValue ); // merge the changes
     }
   }
 

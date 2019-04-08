@@ -6,6 +6,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 
 // Bootstrapping 'AppModule' in 'index.html' (<my-app-root>) / starting the App...
+// see also " bootstrap: [ AppComponent ] " in 'app.module.ts' 
 platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
   // Ensure Angular destroys itself on hot reloads.
   if (window['ngRef']) {

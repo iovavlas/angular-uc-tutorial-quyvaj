@@ -6,7 +6,7 @@
 		{{ Num1 + 2 + '!' }} {{ isHappy ? ';)' : ':(' }}
 	</div>
 	<div>
-		<h2> - Property (One way) binding: [Component => Template] - </h2>
+		<h2> - [Property] (One way) binding: [Component => Template] / read - </h2>
 		<span> {{ title }} </span> 
     <span [innerHTML]="title"> </span> 
     <div>
@@ -16,7 +16,8 @@
     </div>
   </div>
   <div>
-    <h2> - Event binding: [Template => Component] - </h2> 
+    <h2> - (Event) binding: [Template => Component] / write - <br> 
+        - & [Property] binding: [Component => Template] / read - </h2> 
     <input type="text"  [value]=eventInputText  
            (input)="handleInput($event)" placeholder="Input field"
            (focus)="this.eventInputText=''">
@@ -24,7 +25,7 @@
     <button (click)="handleClickDelete()"> Delete Input </button>
   </div> 
   <div>
-    <h2> - Two way binding (Read & Write) - </h2> 
+    <h2> - Two way binding (Read & Write) with ngModel - </h2> 
     <input type="text"  [ngModel]=inputText2  
            (ngModelChange)="handleChange($event)" placeholder="Input field"
            (focus)="this.inputText2=''">
@@ -35,7 +36,7 @@
   </div> 
   <div>
     <h2> - Template #ref variables (Reference to a DOM-Node) - </h2> 
-    <input type="text"  #username  value=""> 
+    <input type="text"  #username  value="">    <!-- like an 'id' ... --> 
     <div> You entered: {{inputText4}} </div> 
     <button (click)="handleClickGet(username.value)"> Get Input </button>
   </div> 

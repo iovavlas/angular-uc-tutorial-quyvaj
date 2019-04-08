@@ -41,8 +41,8 @@ export class PassengerDashboardService {
     return this.http            // Http {}
           .get(PASSENGER_API)   // Observable {} (it's like a Data stream)
           .map( (response: Response) => {     // response = Observable {}
-            console.log('...response GET', response);     
-            return response.json().passengers   // 'passengers' is the [property] of the JSON-Object in 'db.json' in line #2 
+            console.log('...response GET', response); 
+            return response.json().passengers;   // 'passengers' is the [property] of the JSON-Object in 'db.json' in line #2 
           } );
           //.catch( (error: any) => Observable.throw( error.json() ) );   
   }
