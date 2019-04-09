@@ -27,6 +27,6 @@ const routes: Routes = [
                   // custom Modules 
                   PassengerDashboardModule ],
   declarations: [ AppComponent, HomeComponent, NotFoundComponent ],
-  bootstrap:    [ AppComponent ]    
+  bootstrap:    [ AppComponent ]    // Bootstrapping 'AppComponent'   
 })
 export class AppModule { }
