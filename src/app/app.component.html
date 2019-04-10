@@ -30,7 +30,7 @@
            (ngModelChange)="handleChange($event)" placeholder="Input field"
            (focus)="this.inputText2=''">
     <div> You entered: {{inputText2}} </div> 
-    <input type="text"  [(ngModel)]=inputText3  
+    <input type="text"  [(ngModel)]="inputText3"  
             placeholder="Input field"   (focus)="this.inputText3=''">
     <div> You entered: {{inputText3}} </div>
   </div> 
