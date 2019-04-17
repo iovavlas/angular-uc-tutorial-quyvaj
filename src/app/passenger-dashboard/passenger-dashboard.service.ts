@@ -18,7 +18,8 @@ const PASSENGER_API: string = 'https://raw.githubusercontent.com/iovavlas/angula
 @Injectable()   // tells Angular, that we can inject things in the constructor...  
 export class PassengerDashboardService {
 
-  // Make the service a Http-service / Inject the Http-module into the Service-constructor 
+  // Make the service a Http-service / Inject the Http-module into the Service-constructor. 
+  // For that, is the '@Injectable' necessary...  
   constructor(private http: Http) {
     console.log('Inside the service constructor...'); 
     console.log('...http', http);
