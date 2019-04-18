@@ -78,6 +78,7 @@
     </nav>  
     <!-- Dynamic navigation with ngFor -->
     <nav class="nav">
+      <!-- Following works also with e.g. <a href=/passengers> but then we reload(!) the page --> 
       <a *ngFor="let item of nav"
       [routerLink]="item.link"  
       routerLinkActive="active"     
