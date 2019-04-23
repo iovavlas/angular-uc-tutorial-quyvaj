@@ -43,4 +43,5 @@ const routes: Routes = [
                   PassengerViewerComponent ],
   providers:    [ PassengerDashboardService ]
 })
+
 export class PassengerDashboardModule { }

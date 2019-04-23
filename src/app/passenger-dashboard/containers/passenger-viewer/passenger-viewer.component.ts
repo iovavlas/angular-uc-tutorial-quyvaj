@@ -46,6 +46,7 @@ export class PassengerViewerComponent implements OnInit {
       }); */
     
     /* using the Service and the Router to fetch the data dynamically... */
+    /* We can use the route.snapshot.params method to fetch static data... */
     this.route.params
       .switchMap( (data: Passenger) => {       // the actual Passenger id from the Url Address
           console.log('...data (route)', data);
