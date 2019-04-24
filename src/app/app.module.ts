@@ -13,12 +13,12 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './not-found.component';
 
-// Routes
+// Routes (e.g. when we type something manually in the URL)
 const routes: Routes = [
   // path: follows the domain in URL... e.g. domain/passengers
   { path: '', component: HomeComponent, pathMatch: 'full' }, 
-  //{ path: '',   redirectTo: 'passengers', pathMatch: 'full' }, 
-  { path: '**', component: NotFoundComponent }
+  /*{ path: '**',   redirectTo: '/oops' },*/ 
+  { path: '**', component: NotFoundComponent, data: {message: 'This page does not exists!'} }
 ];
 
 @NgModule({

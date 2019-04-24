@@ -46,9 +46,8 @@ export class PassengerViewerComponent implements OnInit {
       }); */
     
     /* using the Service and the Router to fetch the data dynamically... */
-    /* We can use the route.snapshot.params method to fetch static data... */
-    this.route.params
-      .switchMap( (data: Passenger) => {       // the actual Passenger id from the Url Address
+    this.route.params                           // Observable 
+      .switchMap( (data: Passenger) => {       // the actual Passenger id from the URL Address
           console.log('...data (route)', data);
           return this.passengerService.getPassenger(data.id);   // Observable   
         }
@@ -58,6 +57,18 @@ export class PassengerViewerComponent implements OnInit {
           return this.passenger = data;            
         }
       ); 
+    
+    /* We can also use the route.snapshot.params method to get the id from the URL Address... 
+      Also for the queryParams and the fragment, if we use any... */ 
+    console.log('Snapshot params', this.route.snapshot.params);
+    console.log('Snapshot queryParams', this.route.snapshot.queryParams);
+    console.log('Snapshot fragment', this.route.snapshot.fragment);
+    this.route.params                       // Observable. Get informed when the URL-parameters change
+      .subscribe( (params: Params) => {     // We can do the same thing (subscribe) for the queryParams          
+          console.log('...URL parameters', params);                     // and the fragment as well
+          console.log('...Observable', this.passengerService.getPassenger(params.id).subscribe);
+        }
+      );   
   }
 
   onUpdatePassenger(event: Passenger) {
@@ -75,5 +86,10 @@ export class PassengerViewerComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['/passengers']);
+    
+    //this.router.navigate(['passengers'], {relativeTo: this.route}); 
+    // This way, we would navigate relativ to the current active Route -> URL 'DOMAIN/passengers/id/passengers'
+    // Here we can also use '[queryParams]' and 'fragment', if we wanted to... 
+    // With queryParamsHandling: 'preserve', we can maintain the queryParams in the URL, even if we jump somewhere else 
   }
 }

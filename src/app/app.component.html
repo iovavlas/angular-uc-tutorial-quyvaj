@@ -63,18 +63,24 @@
   <div>
     <!-- hard coded links --> 
     <nav class="nav">
+      <!-- We don't use <a href="/"> to avoid to refresh the page by clicking a link --> 
       <a routerLink="/"  
       routerLinkActive="active"     
       [routerLinkActiveOptions]="{ exact: true }"> 
         Home 
       </a>
-      <a routerLink="/oops" 
+      <!--<a routerLink="/oops" -->
+      <a [routerLink]="['/users', 10, 'Anna']" [queryParams]="{param1: true}" fragment="TestString"
       routerLinkActive="active"> 
         404 
+      <!-- "/oops": absolute path. "oops": relative path. We can also use "../oops".--> 
+      <!-- We use routerLinkActive="active" and "exact" to style the current active link -->
+      <!-- <a [routerLink]="['/users', 10, 'Anna']"> ====> URL: DOMAIN/users/10/Anna  --> 
+      <!-- With [queryParams]="{param1: true}" ====> URL: DOMAIN/users/10/Anna?param1=true  -->
+      <!-- With fragment="TestString" ====> URL: DOMAIN/users/10/Anna?param1=true#TestString  -->
       </a>
-      <router-outlet> </router-outlet>  <!-- see Route assignment in 'app.module.ts' 
-      router-outlet tells Angular, where to display the content of the corresponding component 
-      of the currently selected Route --> 
+      <!-- 'router-outlet' tells Angular, where to display the content of the currently selected component. There is only one in each Hierarchy... --> 
+      <router-outlet> </router-outlet>  <!-- see Route assignment in 'app.module.ts' --> 
     </nav>  
     <!-- Dynamic navigation with ngFor -->
     <nav class="nav">
