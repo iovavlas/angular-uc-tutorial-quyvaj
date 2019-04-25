@@ -18,7 +18,7 @@ const routes: Routes = [
   // path: follows the domain in URL... e.g. domain/passengers
   { path: '', component: HomeComponent, pathMatch: 'full' }, 
   /*{ path: '**',   redirectTo: '/oops' },*/ 
-  { path: '**', component: NotFoundComponent, data: {message: 'This page does not exists!'} }
+  { path: '**', component: NotFoundComponent, data: {message: 'This page does not exist!'} }
 ];
 
 @NgModule({
