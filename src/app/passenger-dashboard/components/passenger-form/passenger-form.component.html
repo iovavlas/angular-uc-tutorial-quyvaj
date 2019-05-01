@@ -12,7 +12,8 @@
       Passenger name: 
       <!-- we use 'ngModel' (alone, without a #ref vaiable) to tell Angular that this particular input is actually a control of my form. 
       With a #ref variable and "ngModell" combined together, we get access to this particular input of our form.
-      With '[ngModell]' we use property binding, to display the content of a variable. We can use this for example to display a default from a drop-down list. -->
+      With '[ngModell]' we use property binding, to display the content of a variable. We can use this for example to display a default from a drop-down list. 
+      With '[(ngModell)]' we use 2 way binding, if we need to... -->
       <input type="text" name="fullname"  
       [ngModel]="detail?.fullname"  #fullname="ngModel"  required>
       {{ fullname.value }} <br>
