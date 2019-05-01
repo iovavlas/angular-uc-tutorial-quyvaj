@@ -1,6 +1,8 @@
 <div class="formComponent">
   <form  #form="ngForm"  novalidate
         (ngSubmit)="handleSubmit(form.value, form.valid)">
+    <!-- we use #form="ngForm" to get access to the form created by Angular --> 
+    <!-- we use (ngSubmit) in the form HTML element instead of (onSubmit) on the button, in order to override the default behavior of HTML -->
     <div>
       Original Passenger Data:  
     </div>
@@ -8,6 +10,8 @@
 
     <div>
       Passenger name: 
+      <!-- we use 'ngModel' (alone, without a #ref vaiable) to tell Angular that this particular input is actually a control of my form. 
+      With a #ref variable and "ngModell" combined together, we get access to this particular input of our form -->
       <input type="text" name="fullname"  
       [ngModel]="detail?.fullname"  #fullname="ngModel"  required>
       {{ fullname.value }} <br>
@@ -19,6 +23,8 @@
 
     <div>
       Passenger ID: 
+      <!-- we can also use the directive 'email' next to 'required' to validate an E-Mail address --> 
+      <!-- Additionally, you might also want to enable HTML5 validation (by default, Angular disables it). You can do so by adding the 'ngNativeValidate' to a control in your template -->
       <input type="number" name="id"  
       [ngModel]="detail?.id"  #id="ngModel"  required  minlength="1">
       {{ id.value }} <br>
@@ -75,6 +81,7 @@
       Invalid: {{ form.invalid | json }}
     </div>
 
+    <!-- Additionally to 'disabled', we might also want to style the invalid input of the form. We can do this, by adding in our css-file the css-class 'input.ng-invalid.ng-touched' for example and define a ref border for this class -->
     <button type="submit"  [disabled]="form.invalid"> 
       Update passenger 
     </button>  
