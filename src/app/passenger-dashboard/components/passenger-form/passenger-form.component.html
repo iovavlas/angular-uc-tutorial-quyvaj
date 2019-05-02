@@ -1,7 +1,7 @@
 <div class="formComponent">
   <form  #form="ngForm"  novalidate
         (ngSubmit)="handleSubmit(form.value, form.valid)">
-    <!-- we use #form="ngForm" to get access to the form created by Angular --> 
+    <!-- we use #form="ngForm" to get access to the form created by Angular (not HTML) --> 
     <!-- we use (ngSubmit) in the form HTML element instead of (onSubmit) on the button, in order to override the default behavior of HTML -->
     <div>
       Original Passenger Data:  
@@ -12,8 +12,9 @@
       Passenger name: 
       <!-- we use 'ngModel' (alone, without a #ref vaiable) to tell Angular that this particular input is actually a control of my form. 
       With a #ref variable and "ngModell" combined together, we get access to this particular input of our form.
-      With '[ngModell]' we use property binding, to display the content of a variable. We can use this for example to display a default from a drop-down list. 
+      With '[ngModell]' we use property binding, to display the content of a variable. We can use this for example to display a default option from a drop-down list. 
       With '[(ngModell)]' we use 2 way binding, if we need to... -->
+      <!-- we can use 'ngModelGroup' to group several inputs together --> 
       <input type="text" name="fullname"  
       [ngModel]="detail?.fullname"  #fullname="ngModel"  required>
       {{ fullname.value }} <br>
@@ -36,7 +37,8 @@
       </div>
     </div> 
 
-    <!-- Radio Buttons... 
+    <!-- Radio Buttons... -->
+    <!--
     <div>
       Checked in: 
       <label>
@@ -47,7 +49,19 @@
         <input type="radio" name="checkedIn" [value]="false"  
         [ngModel]="detail?.checkedIn"  (ngModelChange)="toggleCheckIn($event)"> No
       </label>
-    </div> -->
+    </div> 
+    -->
+    <div *ngFor="let gender of genders">
+      <label>
+        <input 
+          type="radio"
+          name="gender"
+          ngModel
+          [value]="gender"> 
+          {{ gender }}
+      </label>
+    </div>
+
     <div>
       Checked in: 
       <label>

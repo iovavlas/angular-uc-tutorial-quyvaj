@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { NgForm } from 
 
 // Interfaces 
 import { Passenger } from '../../interfaces/passenger.interface';
@@ -15,6 +16,10 @@ export class PassengerFormComponent {
 
   @Output()   // pass data from the child (subcomponent) into the parent (container)
   update: EventEmitter<Passenger> = new EventEmitter<Passenger>();
+
+  genders = ['male', 'female'];
+
+  @ViewChild('form') myForm: NgForm; 
 
   constructor() {
     console.log('Inside PassengerFormComponent constructor...');
