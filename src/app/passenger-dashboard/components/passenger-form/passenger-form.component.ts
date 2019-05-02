@@ -31,7 +31,8 @@ export class PassengerFormComponent {
     }
   }
 
-  /* If we want to have access to the form, before we actually submit it, for example if we want to validate sth. before submitting, then we ca do this with @ViewChild, since we already have a #ref variable for the whole form -> '#form' */  
+  /* If we want to have access to the form, before we actually submit it, for example if we want to validate sth. before submitting, then we ca do this with @ViewChild, since we already have a #ref variable for the whole form -> '#form' 
+  This wayy, we don't need to pass it into the method, as a parameter */  
   /* If we pass the whole form in to this method, instead of "form.value", then this argument is of type NgForm (not Passenger) */ 
   handleSubmit(passenger: Passenger, isValid: boolean) {
     if (isValid) {
