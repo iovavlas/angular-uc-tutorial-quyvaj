@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { NgForm } from 
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 // Interfaces 
 import { Passenger } from '../../interfaces/passenger.interface';
@@ -19,7 +19,7 @@ export class PassengerFormComponent {
 
   genders = ['male', 'female'];
 
-  @ViewChild('form') myForm: NgForm; 
+  @ViewChild('form') myForm: NgForm; // the Type here is NgForm instead of ElementRef
 
   constructor() {
     console.log('Inside PassengerFormComponent constructor...');
@@ -38,5 +38,21 @@ export class PassengerFormComponent {
       console.log("emitting event inside the 'handleSubmit' method...");
       this.update.emit(passenger); 
     }
+    console.log('myForm', this.myForm.value);
+  }
+
+  getCurrentTS() {
+    // patchValue -> set the value of a specific Input field 
+    // setValue --> set the values of the whole Form 
+    this.myForm.form.patchValue( {
+      myGroup: {
+        checkInDate : Date.now()   
+      }
+    } 
+    );
+  }
+
+  resetForm() {
+    this.myForm.reset();
   }
 }

@@ -72,9 +72,12 @@
 
     <!-- *ngIf="detail?.checkedIn" is not correct! That's the original value. 
           We need the actual form value... --> 
-    <div  *ngIf="form.value.checkedIn"> 
+    <div  *ngIf="form.value.checkedIn"  ngModelGroup="myGroup"> 
       Check in date: 
       <input type="number" name="checkInDate"  [ngModel]="detail?.checkInDate">
+      <button type="button" (click)="getCurrentTS()">
+        Get current Timestamp
+      </button>
     </div>
 
     <!-- Den douleuei swsta! Des to diko tou paradeigma... --> 
@@ -101,5 +104,9 @@
     <button type="submit"  [disabled]="form.invalid"> 
       Update passenger 
     </button>  
+    &nbsp;
+    <button type="button" (click)="resetForm()">
+      Reset
+    </button>
   </form>
 </div>
