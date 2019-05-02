@@ -37,7 +37,7 @@
   <div>
     <h2> - Template #ref variables (Reference to a DOM-Node) - </h2> 
     <!-- we can use #ref variables only in the HTML-Template!!!
-    If we want to use it in the TS-File, then we use @ViewChild --> 
+    If we want to use it in the TS-file, then we use @ViewChild --> 
     <input type="text"  #username  value="">    <!-- like an 'id' ... --> 
     <div> You entered: {{inputText4}} </div> 
     <button (click)="handleClickGet(username.value)"> Get Input </button>
@@ -96,4 +96,6 @@
       <router-outlet> </router-outlet>  <!-- see Route assignment in 'app.module.ts' --> 
     </nav>
   </div>
+
+  <reactive-form></reactive-form>
 </div>

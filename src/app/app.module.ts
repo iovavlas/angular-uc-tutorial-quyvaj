@@ -5,6 +5,9 @@ import { CommonModule } from '@angular/common';   // e.g. Directives (ngIf, ngFo
 import { FormsModule } from '@angular/forms';     // for 2 way Binding
 import { RouterModule, Routes } from '@angular/router';   // for routing 
 
+import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 // custom Modules 
 import { PassengerDashboardModule } from './passenger-dashboard/passenger-dashboard.module'; 
 
@@ -12,6 +15,7 @@ import { PassengerDashboardModule } from './passenger-dashboard/passenger-dashbo
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './not-found.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component'; 
 
 // Routes (e.g. when we type something manually in the URL)
 const routes: Routes = [
@@ -24,10 +28,12 @@ const routes: Routes = [
 @NgModule({
   imports:      [ // Angular Modules 
                   BrowserModule, CommonModule, FormsModule, 
-                  RouterModule.forRoot(routes, { useHash: false }),  
+                  RouterModule.forRoot(routes, { useHash: false }), 
+                  HttpModule, ReactiveFormsModule, 
+ 
                   // custom Modules 
                   PassengerDashboardModule ],
-  declarations: [ AppComponent, HomeComponent, NotFoundComponent ],
+  declarations: [ AppComponent, HomeComponent, NotFoundComponent, ReactiveFormComponent ],
   bootstrap:    [ AppComponent ]    // Bootstrapping 'AppComponent'   
 })
 export class AppModule { }

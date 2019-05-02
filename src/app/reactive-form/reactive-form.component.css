@@ -1,0 +1,13 @@
+.reactive {
+  background-color: #34ce41;   
+  border: 1px groove #000; 
+  margin: 3px 3px; 
+}
+
+h2 {
+  color: blue;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

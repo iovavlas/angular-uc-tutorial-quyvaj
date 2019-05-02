@@ -1,0 +1,61 @@
+<div class="reactive">
+	<h2> - reactive Forms - </h2>
+  <!-- we build reactive forms in the TS-file, as opposed to template-driven forms, which we build in the HTML template. We use [formGroup] instead of 'ngForm'. With [formGroup] we sync the form in the HTML-template with our reactive form in the TS-file. We cann also use 'formGroup' to group some controls together, like with 'ngModelGroup' in the template-driven forms -->
+  <!-- We still use (ngSubmit) here also, to submit the form --> 
+	<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <!-- The 'formGroupName' must be the same like the 'formGroup' in the TS-file --> 
+		<div formGroupName="userData"> 
+			<label for="username">Username</label>
+      <!-- With 'formControlName' we sync the form controls / input fields between HTML and TS --> 
+      <!-- We specify the validators (e.g. required) in the TS-file --> 
+	    <input
+	      type="text"
+	      id="username"
+	      formControlName="username">
+      <!-- We get access to an input field / control with the 'get' method, instead of using a #ref variable = "ngModel" in the template-driven forms --> 
+	    <span *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched">
+	      <span *ngIf="signupForm.get('userData.username').errors['nameIsForbidden']">
+          <!-- We can also use the same css-classes like in the template-driven forms (e.g. ng-invalid) --> 
+          This name is invalid!
+        </span>
+	      <span *ngIf="signupForm.get('userData.username').errors['required']">
+          This field is required!
+        </span>
+	    </span>
+	    <label for="email">email</label>
+	    <input
+	      type="text"
+	      id="email"
+	      formControlName="email">
+	    <span *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched">
+        Please enter a valid email!
+      </span>  
+	  </div>
+	  <div *ngFor="let gender of genders">
+	    <label>
+	      <input
+	        type="radio"
+	        formControlName="gender"
+	        [value]="gender">
+          {{ gender }}
+	    </label>
+	  </div>
+	  <div formArrayName="hobbies">
+	    <h4>Your Hobbies</h4>
+	    <button
+	      type="button"
+	      (click)="onAddHobby()">
+        Add Hobby
+      </button>
+	    <div *ngFor="let hobbyControl of signupForm.get('hobbies').controls; let i = index">
+	      <input type="text" [formControlName]="i">
+	    </div>
+	  </div>
+	  <span *ngIf="!signupForm.valid && signupForm.touched">
+      Please enter valid data!
+    </span>
+	  <button type="submit">
+      Submit
+    </button>
+	</form>
+</div>
