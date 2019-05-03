@@ -56,7 +56,7 @@
 	  <span *ngIf="!signupForm.valid && signupForm.touched">
       Please enter valid data!
     </span>
-	  <button type="submit">
+	  <button type="submit"> <!-- [disabled]="signupForm.invalid" -->
       Submit
     </button>
 	</form>
