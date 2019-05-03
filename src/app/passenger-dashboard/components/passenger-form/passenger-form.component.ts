@@ -43,8 +43,8 @@ export class PassengerFormComponent {
   }
 
   getCurrentTS() {
-    // patchValue -> set the value of a specific Input field 
-    // setValue --> set the values of the whole Form 
+    // patchValue -> set the value of a specific Input field / control
+    // setValue --> set the values of the whole form 
     this.myForm.form.patchValue( {
       myGroup: {
         checkInDate : Date.now()   

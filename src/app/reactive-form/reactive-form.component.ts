@@ -22,6 +22,7 @@ export class ReactiveFormComponent implements OnInit {
     this.signupForm = new FormGroup({
       // We cann also use 'formGroup' to group some controls together
       'userData': new FormGroup({
+                            // if we plan to use 'this' in the custom validator, then we have to bind it...
         'username': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
         'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails)
       }),
@@ -29,13 +30,17 @@ export class ReactiveFormComponent implements OnInit {
       'hobbies': new FormArray([])  // 'FormArray' is an Array of controls 
     });
 
+    /* listen to value changes... */  
     // this.signupForm.valueChanges.subscribe(
     //   (value) => console.log(value)
     // );
+
+    /* listen to status changes... */  
     this.signupForm.statusChanges.subscribe(
       (status) => console.log(status)
     );
 
+    // setValue --> set the values of the whole form 
     this.signupForm.setValue({
       'userData': {
         'username': 'Max',
@@ -44,7 +49,8 @@ export class ReactiveFormComponent implements OnInit {
       'gender': 'male',
       'hobbies': []
     });
-    
+
+    // patchValue -> set the value of a specific Input field / control    
     this.signupForm.patchValue({
       'userData': {
         'username': 'Anna',
@@ -54,6 +60,7 @@ export class ReactiveFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.signupForm);
+    // If we wnat to reset only specific input fileds and not the whole form, then we can pass an object to reset()... 
     this.signupForm.reset();
   }
 
@@ -63,7 +70,7 @@ export class ReactiveFormComponent implements OnInit {
     (<FormArray>this.signupForm.get('hobbies')).push(control);
   }
 
-  // custom Validator...  
+  // custom validator...  
   forbiddenNames(control: FormControl): {[s: string]: boolean} {
     if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
       return {'nameIsForbidden': true};
@@ -71,6 +78,7 @@ export class ReactiveFormComponent implements OnInit {
     return null;
   }
 
+  // asynchronous custom validator...
   forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
     const promise = new Promise<any>((resolve, reject) => {
       setTimeout(() => {
@@ -79,7 +87,7 @@ export class ReactiveFormComponent implements OnInit {
         } else {
           resolve(null);
         }
-      }, 1500);
+      }, 1500);   // resolve after 1,5 seconds 
     });
     return promise;
   }
