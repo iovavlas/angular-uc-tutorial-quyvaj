@@ -12,8 +12,9 @@
 	      type="text"
 	      id="username"
 	      formControlName="username">
-      <!-- We get access to an input field / control with the 'get' method, instead of using a #ref variable = "ngModel" in the template-driven forms --> 
+      <!-- We get access to an input field / control with the 'get' method, instead of using a #ref variable = "ngModel" like in the template-driven forms --> 
 	    <span *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched">
+        <!-- Use the developer tools (F12) to see which errors will be set inside the controls... --> 
 	      <span *ngIf="signupForm.get('userData.username').errors['nameIsForbidden']">
           <!-- We can also use the same css-classes like in the template-driven forms (e.g. ng-invalid) --> 
           This name is invalid!
