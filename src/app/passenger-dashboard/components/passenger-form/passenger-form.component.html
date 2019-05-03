@@ -102,6 +102,7 @@
     </div>
 
     <!-- Additionally to 'disabled', we might also want to style the invalid input of the form. We can do this, by adding in our css-file the css-class 'input.ng-invalid.ng-touched' for example and define a ref border for this class -->
+    <!-- Note that only the first button is of type 'submit', in order to match the method called by (ngSubmit) --> 
     <button type="submit"  [disabled]="form.invalid"> 
       Update passenger 
     </button>  
