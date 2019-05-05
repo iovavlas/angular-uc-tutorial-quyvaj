@@ -1,7 +1,7 @@
 <div class="reactive">
 	<h2> - reactive Forms - </h2>
   <!-- we build reactive forms in the TS-file, as opposed to template-driven forms, which we build in the HTML template. We use [formGroup] instead of 'ngForm'. With [formGroup] we sync the form in the HTML-template with our reactive form in the TS-file. We cann also use 'formGroup' to group some controls together, like with 'ngModelGroup' in the template-driven forms -->
-  <!-- We still use (ngSubmit) here also, to submit the form --> 
+  <!-- We still use (ngSubmit) here too, to submit the form --> 
 	<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <!-- The 'formGroupName' must be the same like the 'formGroup' in the TS-file --> 
 		<div formGroupName="userData"> 
