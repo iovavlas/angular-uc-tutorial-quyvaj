@@ -1,9 +1,22 @@
 .pipes {
-  background-color: #2bd0d6;   
+  background-color: #4bdbe0;   
   border: 1px dashed rgb(48, 52, 56); 
   margin: 3px 3px; 
 }
 
 h2 {
   color: blue;
+}
+
+.success {
+  color: rgb(65, 160, 65);
+}
+
+.warning {
+  color: rgb(202, 139, 43);
+}
+
+
+.danger {
+  color: rgb(197, 36, 36);
 }

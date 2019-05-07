@@ -6,11 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./pipes.component.css']
 })
 export class PipesComponent {
-  appStatus = new Promise((resolve, reject) => {
-    setTimeout(() => {
+
+  // simulate a Http call, that gets the status of a server after 2 seconds ... 
+  appStatus = new Promise( (resolve, reject) => {
+    setTimeout( () => {
       resolve('stable');
     }, 2000);
-  });
+  } );
+
   servers = [
     {
       instanceType: 'medium',
@@ -33,18 +36,21 @@ export class PipesComponent {
     {
       instanceType: 'small',
       name: 'Testing Environment Server',
-      status: 'stable',
+      status: 'critical',
       started: new Date(15, 1, 2017)
     }
   ];
+
   filteredStatus = '';
+
   getStatusClasses(server: { instanceType: string, name: string, status: string, started: Date }) {
     return {
-      'list-group-item-success': server.status === 'stable',
-      'list-group-item-warning': server.status === 'offline',
-      'list-group-item-danger': server.status === 'critical'
+      'success': server.status === 'stable',
+      'warning': server.status === 'offline',
+      'danger': server.status === 'critical'
     };
   }
+
   onAddServer() {
     this.servers.push({
       instanceType: 'small',

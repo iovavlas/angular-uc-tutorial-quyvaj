@@ -1,20 +1,31 @@
 <div class="pipes">
 	<h2> - Pipes vol. 2 - </h2>
+  <!-- Pipes transform only the output. The original values in the TS file remain unchanged! --> 
 	<div>
 		<input type="text" [(ngModel)]="filteredStatus">
     <br>
     <button (click)="onAddServer()">Add Server</button>
-    <br><br>
-    <h3>App Status: {{ appStatus | async}}</h3>
+    <br>
+    <!-- The built-in 'async' pipe subscribes to an Observable or Promise and 
+    returns the latest value, that has been emitted... --> 
+    <h3>App Status: {{ appStatus | async }}</h3> 
     <hr>
     <ul>
+      <!-- In the following *ngFor we pass the whole Array of servers into the pipe 'filter'. 
+      Note: Pipes will re-run automatically by default, if their pipe-input (filter) changes, 
+      but not, if the data change (e.g. if we add manually a server). That would be bad for 
+      the performance. We can ovverride the default behaviour with 'pure: false' -->
       <li
-        *ngFor="let server of servers | filter:filteredStatus:'status'"
+        *ngFor="let server of servers | filter: filteredStatus: 'status' | sort"
         [ngClass]="getStatusClasses(server)">
-        <span>{{ server.status }}</span>
+        <span><{{ server.status }}></span>
+        <!-- We can pass a parameter to an Angular built in pipe with the following syntax: 
+        pipe-name : 'param1' : 'param2' 
+        Note: The order of chained pipes might be sometimes important...
+        The pipes 'shorten' and 'filter' are custom pipes. -->
         <strong>{{ server.name | shorten:15 }}</strong> |
         {{ server.instanceType | uppercase }} |
-        {{ server.started | date:'fullDate' | uppercase }}
+        {{ server.started | date:'fullDate' | lowercase }}
       </li>
     </ul>
   </div>
