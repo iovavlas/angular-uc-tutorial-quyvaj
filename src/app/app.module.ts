@@ -15,7 +15,12 @@ import { PassengerDashboardModule } from './passenger-dashboard/passenger-dashbo
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './not-found.component';
-import { ReactiveFormComponent } from './reactive-form/reactive-form.component'; 
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { PipesComponent } from './pipes/pipes.component';
+
+// custom Pipes
+import { ShortenPipe } from './pipes/shorten.pipe'; 
+import { FilterPipe } from './pipes/filter.pipe';
 
 // Routes (e.g. when we type something manually in the URL)
 const routes: Routes = [
@@ -33,7 +38,8 @@ const routes: Routes = [
  
                   // custom Modules 
                   PassengerDashboardModule ],
-  declarations: [ AppComponent, HomeComponent, NotFoundComponent, ReactiveFormComponent ],
+  declarations: [ AppComponent, HomeComponent, NotFoundComponent, ReactiveFormComponent, 
+                  PipesComponent, ShortenPipe, FilterPipe ],
   bootstrap:    [ AppComponent ]    // Bootstrapping 'AppComponent'   
 })
 export class AppModule { }

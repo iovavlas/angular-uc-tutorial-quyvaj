@@ -1,0 +1,21 @@
+<div class="pipes">
+	<h2> - Pipes vol. 2 - </h2>
+	<div>
+		<input type="text" [(ngModel)]="filteredStatus">
+    <br>
+    <button (click)="onAddServer()">Add Server</button>
+    <br><br>
+    <h3>App Status: {{ appStatus | async}}</h3>
+    <hr>
+    <ul>
+      <li
+        *ngFor="let server of servers | filter:filteredStatus:'status'"
+        [ngClass]="getStatusClasses(server)">
+        <span>{{ server.status }}</span>
+        <strong>{{ server.name | shorten:15 }}</strong> |
+        {{ server.instanceType | uppercase }} |
+        {{ server.started | date:'fullDate' | uppercase }}
+      </li>
+    </ul>
+  </div>
+</div>
