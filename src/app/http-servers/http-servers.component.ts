@@ -10,8 +10,6 @@ import { HttpServersService } from './http-servers.service';
 })
 export class HttpServersComponent {
 
-  constructor(private httpServersService: HttpServersService) {}
-
   servers = [
     {
       name: 'Testserver',
@@ -25,12 +23,6 @@ export class HttpServersComponent {
     }
   ]; 
 
-  private generateId() {
-    return Math.round(Math.random() * 10000);
-  }
-
-  appName = this.httpServersService.getAppName();
-
   onAddServer(name: string) {
     this.servers.push({
       name: name,
@@ -39,18 +31,31 @@ export class HttpServersComponent {
     });
   }
 
+  private generateId() {
+    return Math.round(Math.random() * 10000);
+  }
+
+  // Inject the service...
+  constructor(private httpServersService: HttpServersService) {}
+
+  appName = this.httpServersService.getAppName(); // if we didn't use the 'async' pipe in the HTML template, then we would have had to subscribe...
+
   onSave() {
     this.httpServersService.storeServers(this.servers)
-      .subscribe(
-        (response) => console.log(response),
-        (error) => console.log(error)
+      .subscribe(       // subscribe to the Observable
+        (response) => console.log('response', response),
+        //(response: Response) => console.log('response', response.json()),
+        (error) => console.log('error', error)
       );
   }
 
   onGet() {
     this.httpServersService.getServers()
-      .subscribe(
-        (servers: any[]) => this.servers = servers,
+      .subscribe(       // subscribe to the Observable     
+        (servers: any[]) => {
+          this.servers = servers;
+          console.log('servers', servers);
+        },
         (error) => console.log(error)
       );
   }
