@@ -17,6 +17,10 @@ import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './not-found.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { PipesComponent } from './pipes/pipes.component'; 
+import { HttpServersComponent } from './http-servers/http-servers.component';
+
+// Services
+import { HttpServersService } from './http-servers/http-servers.service'; 
 
 // custom Pipes
 import { ShortenPipe } from './pipes/shorten.pipe';
@@ -37,11 +41,12 @@ const routes: Routes = [
                   BrowserModule, CommonModule, FormsModule, 
                   RouterModule.forRoot(routes, { useHash: false }), 
                   HttpModule, ReactiveFormsModule, 
- 
                   // custom Modules 
                   PassengerDashboardModule ],
   declarations: [ AppComponent, HomeComponent, NotFoundComponent, ReactiveFormComponent, 
-                  PipesComponent, ShortenPipe, FilterPipe, ReversePipe, SortPipe ],
+                  PipesComponent, ShortenPipe, FilterPipe, ReversePipe, SortPipe,
+                  HttpServersComponent ],
+  providers:    [ HttpServersService ],
   bootstrap:    [ AppComponent ]    // Bootstrapping 'AppComponent'   
 })
 export class AppModule { }
