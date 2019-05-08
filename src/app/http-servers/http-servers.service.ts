@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
+/*
+import 'rxjs/add/operator/map'; 
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+*/
 
 @Injectable()
 export class HttpServersService {
@@ -35,7 +40,7 @@ export class HttpServersService {
         }
       );
   }
-  
+
   getAppName() {
     return this.http.get('https://udemy-ng-http.firebaseio.com/appName.json')
       .map(

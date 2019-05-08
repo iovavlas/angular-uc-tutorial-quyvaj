@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Response } from '@angular/http';
 
-import { ServerService } from './http-servers.service';
+import { HttpServersService } from './http-servers.service';
 
 @Component({
   selector: 'http-servers',
@@ -10,7 +10,7 @@ import { ServerService } from './http-servers.service';
 })
 export class HttpServersComponent {
 
-  constructor(private serverService: ServerService) {}
+  constructor(private httpServersService: HttpServersService) {}
 
   servers = [
     {
@@ -29,7 +29,7 @@ export class HttpServersComponent {
     return Math.round(Math.random() * 10000);
   }
 
-  appName = this.serverService.getAppName();
+  appName = this.httpServersService.getAppName();
 
   onAddServer(name: string) {
     this.servers.push({
@@ -40,7 +40,7 @@ export class HttpServersComponent {
   }
 
   onSave() {
-    this.serverService.storeServers(this.servers)
+    this.httpServersService.storeServers(this.servers)
       .subscribe(
         (response) => console.log(response),
         (error) => console.log(error)
@@ -48,7 +48,7 @@ export class HttpServersComponent {
   }
 
   onGet() {
-    this.serverService.getServers()
+    this.httpServersService.getServers()
       .subscribe(
         (servers: any[]) => this.servers = servers,
         (error) => console.log(error)
