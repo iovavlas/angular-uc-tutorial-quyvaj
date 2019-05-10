@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 
 import 'rxjs/Rx';
 
@@ -17,11 +17,20 @@ export class HttpClientServersService {
     whereas the 'put' method will overwrite any existing data. This depends on the backend */ 
     /* return this.httpClient.put('https://udemy-ng-http-acb9a.firebaseio.com/data.json',
       servers); */                  // The request is an Observable{}. We have to subscribe to it, either here, or there where we make the call... 
+    /*
     return this.httpClient.put('https://udemy-ng-http-acb9a.firebaseio.com/data.json',
       servers, {
         // observe: 'events'   // to observe events, instead of the response 
         observe: 'body'
-      } );    
+        // headers: new HttpHeaders().set('.....').append('.....')
+        // params: new HttpParams().set('.....').append('.....') // eg. Query parameters
+      } );   
+    */
+
+    // In order to monitor the progress of our request (eg. for files), we can use following:  
+    const req = new HttpRequest('PUT', 'https://udemy-ng-http-acb9a.firebaseio.com/data.json',
+      servers, {reportProgress: true} ); 
+    return this.httpClient.request(req);  // Progress = (loaded / total) 
   }
 
   getServers() {

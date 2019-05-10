@@ -47,7 +47,6 @@ export class HttpClientServersComponent {
         (response) => console.log('response', response),
         // (response: Response) => console.log('response', response.json()),
         // (response: HttpEvent<Object>) => console.log('response Event', response),
-        // headers: new HttpHeaders().set('.....').append('.....');
         (error) => console.log('error', error)
       );
   }
