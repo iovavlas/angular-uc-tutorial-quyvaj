@@ -1,0 +1,15 @@
+<div class="http-client">
+	<h2> - Http Client - </h2>
+	<h3>{{ appName | async }}</h3>
+	<input type="text" #serverName> 
+  &nbsp;
+  <button (click)="onAddServer(serverName.value)">Add Server</button>
+  <br><br>
+  <button (click)="onSave()">Save Servers</button>
+  &nbsp;
+  <button (click)="onGet()">Get Servers</button>
+  <hr>
+  <ul *ngFor="let server of servers">
+    <li>{{ server.name }} (ID: {{ server.id }})</li>
+  </ul>
+</div>

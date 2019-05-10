@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';   // for routing
 
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // custom Modules 
 import { PassengerDashboardModule } from './passenger-dashboard/passenger-dashboard.module'; 
@@ -18,9 +19,11 @@ import { NotFoundComponent } from './not-found.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { PipesComponent } from './pipes/pipes.component'; 
 import { HttpServersComponent } from './http-servers/http-servers.component';
+import { HttpClientServersComponent } from './http-client-servers/http-client-servers.component'; 
 
 // Services
 import { HttpServersService } from './http-servers/http-servers.service'; 
+import { HttpClientServersService } from './http-client-servers/http-client-servers.service'; 
 
 // custom Pipes
 import { ShortenPipe } from './pipes/shorten.pipe';
@@ -40,13 +43,13 @@ const routes: Routes = [
   imports:      [ // Angular Modules 
                   BrowserModule, CommonModule, FormsModule, 
                   RouterModule.forRoot(routes, { useHash: false }), 
-                  HttpModule, ReactiveFormsModule, 
+                  HttpModule, ReactiveFormsModule, HttpClientModule, 
                   // custom Modules 
                   PassengerDashboardModule ],
   declarations: [ AppComponent, HomeComponent, NotFoundComponent, ReactiveFormComponent, 
                   PipesComponent, ShortenPipe, FilterPipe, ReversePipe, SortPipe,
-                  HttpServersComponent ],
-  providers:    [ HttpServersService ],
+                  HttpServersComponent, HttpClientServersComponent ],
+  providers:    [ HttpServersService, HttpClientServersService ],
   bootstrap:    [ AppComponent ]    // Bootstrapping 'AppComponent'   
 })
 export class AppModule { }

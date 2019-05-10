@@ -1,0 +1,9 @@
+.http-client {
+  background-color: #da63c0;   
+  border: 1px solid rgb(48, 52, 56); 
+  margin: 3px 3px; 
+}
+
+h2 {
+  color: blue;
+}
