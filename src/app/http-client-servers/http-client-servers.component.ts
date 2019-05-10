@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Response } from '@angular/http';
+import { HttpEvent } from '@angular/common/http';
 
 import { HttpClientServersService } from './http-client-servers.service'; 
 
@@ -44,7 +45,9 @@ export class HttpClientServersComponent {
     this.httpClientServersService.storeServers(this.servers)
       .subscribe(       // subscribe to the Observable
         (response) => console.log('response', response),
-        //(response: Response) => console.log('response', response.json()),
+        // (response: Response) => console.log('response', response.json()),
+        // (response: HttpEvent<Object>) => console.log('response Event', response),
+        // headers: new HttpHeaders().set('.....').append('.....');
         (error) => console.log('error', error)
       );
   }

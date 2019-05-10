@@ -1,61 +1,59 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+
 import 'rxjs/Rx';
-import { Observable } from 'rxjs/Observable';
 
-import 'rxjs/add/operator/map'; 
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
-
-
-@Injectable() // we need this, in order to be able to inject the 'Http' service into this service (constructor)...
+@Injectable() // we need this, in order to be able to inject the 'HttpClient' service into this service (constructor)...
 export class HttpClientServersService {
 
-  constructor(private http: Http) {
-    // console.log('...http vol. 2', http);
+  constructor(private httpClient: HttpClient) {
+    // console.log('...httpClient', httpClient);
   }
 
   // Note: the extension '.json' at the end of the URL is very important, otherwise it won't work !!!
 
   storeServers(servers: any[]) {
-    const myCustomHeaders = new Headers({'Content-Type': 'application/json'});  // optional...
-
     /* For Firebase case, the 'post' method will merge the new data with the existing ones, 
     whereas the 'put' method will overwrite any existing data. This depends on the backend */ 
-    /* return this.http.post('https://udemy-ng-http-acb9a.firebaseio.com/data.json',
-       servers,
-       {headers: headers}); */
-    return this.http.put('https://udemy-ng-http-acb9a.firebaseio.com/data.json',
-      servers,                    // The request is an Observable{}. We have to subscribe to it, either here, or there where we make the call... 
-      {headers: myCustomHeaders});   
+    /* return this.httpClient.put('https://udemy-ng-http-acb9a.firebaseio.com/data.json',
+      servers); */                  // The request is an Observable{}. We have to subscribe to it, either here, or there where we make the call... 
+    return this.httpClient.put('https://udemy-ng-http-acb9a.firebaseio.com/data.json',
+      servers, {
+        // observe: 'events'   // to observe events, instead of the response 
+        observe: 'body'
+      } );    
   }
 
   getServers() {
-    return this.http.get('https://udemy-ng-http-acb9a.firebaseio.com/data.json')   // The response is an Observable{}. We have to subscribe to it, either here, or there where we make the call...
+    // The response is an Observable{}. We have to subscribe to it, either here, or there where we make the call...
+    // By default the httpClient will automatically extract the body of the response. We don't need the json() method anymore. By default we get the data in json format...
+    // We define the type of the data either at the get method (get<Type>), or at the (data: Type) like usual... 
+    // return this.httpClient.get<any>('https://udemy-ng-http-acb9a.firebaseio.com/data.json') 
+    return this.httpClient.get<any>('https://udemy-ng-http-acb9a.firebaseio.com/data.json', 
+      { 
+        // observe: 'response',  // to get the full response, not only the body. Default: 'body'
+        observe: 'body',
+        // responseType: 'text'  // to get the data in text format. Default: 'json'. Other options: 'blob' for files etc.
+        responseType: 'json'
+      } )
       .map(   // transform the response data with the map() operator...
-        (response: Response) => {
-          // the json() method unwraps the response body...
-          const data = response.json();
-          for (const server of data) {
+        // (servers: any) => {
+        (servers) => {
+          console.log('response Client', servers);
+          
+          for (const server of servers) {
             server.name = 'FETCHED_' + server.name;
           }
-          return data; 
-        }
-      ) 
-      .catch( 
-        (error: Response) => {
-          return Observable.throw('Something went wrong');  // we must return an Observable...
-          // return Observable.throw(error);
-          // return Observable.throw(error.json());
+          return servers;
         }
       );
   }
 
   getAppName() {
-    return this.http.get('https://udemy-ng-http-acb9a.firebaseio.com/appName.json') 
+    return this.httpClient.get('https://udemy-ng-http-acb9a.firebaseio.com/appName2.json') 
       .map(
-        (response: Response) => {
-          return response.json();
+        (appName) => {
+          return appName;
         }
       );
   }
