@@ -27,7 +27,7 @@ export class HttpClientServersService {
       } );   
     */
 
-    // In order to monitor the progress of our request (eg. for files), we can use following:  
+    // In order to monitor the progress of our request (eg. for files), we can use following:
     const req = new HttpRequest('PUT', 'https://udemy-ng-http-acb9a.firebaseio.com/data.json',
       servers, {reportProgress: true} ); 
     return this.httpClient.request(req);  // Progress = (loaded / total) 
